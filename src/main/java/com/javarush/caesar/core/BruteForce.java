@@ -7,6 +7,13 @@ public class BruteForce {
         //  для каждого ключа расшифровать текст и оценить, похож ли он на русский:
         //  пробел после точки и запятой, длина слов, частые короткие слова
         //  вернуть вариант с лучшей оценкой
+
+        for (int i = 1; i < alphabet.length -1 ; i++) {
+
+
+        }
+
+
         throw new UnsupportedOperationException("Метод decryptByBruteForce пока не написан");
     }
 }
