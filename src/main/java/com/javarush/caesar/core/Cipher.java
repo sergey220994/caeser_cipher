@@ -44,7 +44,7 @@ public class Cipher {
             int index = st.indexOf(symbol);
             if(index == -1)
             {
-                throw new CipherException("такого символа нет");
+                throw new CipherException("УПС...такого символа нет");
             }
 
             int newindex = ((index - shift) + alphabet.length )% alphabet.length;
