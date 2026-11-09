@@ -2,16 +2,39 @@ package com.javarush.caesar.service;
 
 import com.javarush.caesar.exception.CipherException;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
 public class FileManager {
 
     public String readFile(String filePath) throws CipherException {
-        // TODO прочитать файл в кодировке UTF-8 через Path и Files
-        //  IOException завернуть в CipherException с понятным сообщением
-        throw new UnsupportedOperationException("Метод readFile пока не написан");
+        try {
+            Path path = Path.of(filePath);
+            String file = Files.readString(path, StandardCharsets.UTF_8);
+            return  file;
+
+
+        } catch (IOException e) {
+            throw new CipherException("Не удалось прочитать файл" , e);
+
+        }
     }
 
     public void writeFile(String content, String filePath) throws CipherException {
         // TODO записать текст в файл, исходный файл перезаписывать нельзя
-        throw new UnsupportedOperationException("Метод writeFile пока не написан");
+
+        Path path = Path.of(filePath);
+
+        try {
+            Files.writeString(path, content, StandardOpenOption.CREATE_NEW);
+        }
+
+        catch (IOException e){
+            throw new CipherException("Не удалось записать файл" , e);
+        }
+
     }
 }
