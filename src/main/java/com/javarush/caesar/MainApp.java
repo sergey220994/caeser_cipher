@@ -10,11 +10,7 @@ import java.util.Scanner;
 
 public class MainApp {
 
-    private static final char[] ALPHABET = {
-            'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п',
-            'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я',
-            '.', ',', '«', '»', '"', '\'', ':', '!', '?', ' '
-    };
+    private static final char[] ALPHABET = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', '.', ',', '«', '»', '"', '\'', ':', '!', '?', ' '};
 
     private final Scanner scanner = new Scanner(System.in);
     private final FileManager fileManager = new FileManager();
@@ -64,10 +60,14 @@ public class MainApp {
     }
 
     private void encryptFile() throws CipherException {
+
         // TODO спросить исходный файл, файл для результата и ключ
         //  проверить их через validator, прочитать текст через fileManager,
         //  зашифровать через cipher и записать результат
-        System.out.println("Режим пока не реализован");
+        System.out.println("Укажите исходный файл и ключ для шифрования:" );
+
+
+
     }
 
     private void decryptFile() throws CipherException {

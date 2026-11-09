@@ -2,25 +2,11 @@
 
 **SergeyShkatov**
 
-[![Email](https://img.shields.io/badge/sproshchaev%40gmail.com-red?logo=gmail&logoColor=white)](mailto:sproshchaev@gmail.com)
-[![Website](https://img.shields.io/badge/prosoft.pages.dev-blue?logo=googlechrome&logoColor=white)](https://prosoft.pages.dev)
-
 ---
 
-Заготовка проекта первого модуля JavaRush University для группы 69 Warrant.
-Полное задание лежит на платформе: [Проект модуля 1](https://javarush.com/quests/lectures/jru.module1.lecture51).
+
 
 Программа шифрует текстовый файл сдвигом по алфавиту, расшифровывает его по известному ключу и подбирает ключ перебором, если ключа нет.
-
-Я подготовил каркас: проект собирается, меню запускается, классы названы так же, как в задании.
-Внутри методов стоят `TODO`, их и нужно написать.
-
-## Как начать
-
-1. Нажмите зеленую кнопку **Use this template** вверху этой страницы, затем **Create a new repository**.
-2. Владелец репозитория - ваш аккаунт, имя любое, например `caesar-cipher`. Видимость **Public**, иначе я не смогу открыть работу.
-3. Склонируйте свой новый репозиторий и откройте его в IntelliJ IDEA как Maven-проект.
-4. Запустите `MainApp`. Должно появиться меню из четырех пунктов, а пункт `0` или слово `exit` завершают программу.
 
 ## Что уже есть
 
