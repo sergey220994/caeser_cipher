@@ -24,8 +24,6 @@ public class FileManager {
     }
 
     public void writeFile(String content, String filePath) throws CipherException {
-        // TODO записать текст в файл, исходный файл перезаписывать нельзя
-
         Path path = Path.of(filePath);
 
         try {
