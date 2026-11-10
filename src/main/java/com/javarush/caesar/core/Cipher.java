@@ -14,7 +14,7 @@ public class Cipher {
 
     public String encrypt(String text, int shift) {
         // TODO позицию символа ищем быстрее, чем перебором всего массива
-        char[] charArray = text.toCharArray();
+        char[] charArray = text.toLowerCase().toCharArray();
         StringBuilder result = new StringBuilder();
          String st = String.valueOf(alphabet);
 //        HashMap<String, Integer> st = new HashMap<>();
@@ -37,7 +37,7 @@ public class Cipher {
     }
 
     public String decrypt(String encryptedText, int shift) throws CipherException {
-        char[] charArray = encryptedText.toCharArray();
+        char[] charArray = encryptedText.toLowerCase().toCharArray();
         StringBuilder result = new StringBuilder();
         String st = String.valueOf(alphabet);
         for (char symbol : charArray){

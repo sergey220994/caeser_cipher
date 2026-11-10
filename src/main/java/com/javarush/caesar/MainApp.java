@@ -81,12 +81,32 @@ public class MainApp {
 
         System.out.println("Файл успешно зашифрован \u2705");
 
-
     }
 
     private void decryptFile() throws CipherException {
         // TODO то же, что в encryptFile, только расшифровка
-        System.out.println("Режим пока не реализован");
+
+        String input = ask("исходный файл для расшифровки");
+        String key = ask("ключ");
+
+        if (!validator.isValidKey(Integer.parseInt(key), ALPHABET)){
+            throw new CipherException("неправильный ключ");
+        }
+
+        if (!validator.isFileExists(input)){
+            throw new CipherException("файл не существует");
+        }
+
+        String newinput = fileManager.readFile(input);
+
+        String txt = cipher.decrypt(newinput, Integer.parseInt(key));
+
+        String output = ask("укажите путь для сохранения файла");
+        fileManager.writeFile(txt, output);
+
+
+        System.out.println("Файл успешно расшифрован \u2705");
+
     }
 
     private void bruteForceFile() throws CipherException {
