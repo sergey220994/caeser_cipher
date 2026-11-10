@@ -60,12 +60,26 @@ public class MainApp {
     }
 
     private void encryptFile() throws CipherException {
+        String input = ask("исходный файл");
+        String key = ask("ключ");
 
-        // TODO спросить исходный файл, файл для результата и ключ
-        //  проверить их через validator, прочитать текст через fileManager,
-        //  зашифровать через cipher и записать результат
-        System.out.println("Укажите исходный файл и ключ для шифрования:" );
+        if (!validator.isValidKey(Integer.parseInt(key), ALPHABET)){
+            throw new CipherException("неправильный ключ");
+        }
 
+        if (!validator.isFileExists(input)){
+            throw new CipherException("файл не существует");
+        }
+
+        String newinput = fileManager.readFile(input);
+
+        String txt = cipher.encrypt(newinput, Integer.parseInt(key));
+
+        String output = ask("укажите путь для сохранения файла");
+        fileManager.writeFile(txt, output);
+
+
+        System.out.println("Файл успешно зашифрован \u2705");
 
 
     }
