@@ -60,59 +60,63 @@ public class MainApp {
     }
 
     private void encryptFile() throws CipherException {
-        String input = ask("исходный файл");
-        String key = ask("ключ");
+        String input = ask("Укажите исходный файл: ");
+        String key = ask("Укажите ключ для шифрования \uD83D\uDD11 : ");
 
         if (!validator.isValidKey(Integer.parseInt(key), ALPHABET)){
-            throw new CipherException("неправильный ключ");
+            throw new CipherException("Указан неправильный ключ \u26A0 ");
         }
 
         if (!validator.isFileExists(input)){
-            throw new CipherException("файл не существует");
+            throw new CipherException("Файл не существует \u274C ");
         }
 
         String newinput = fileManager.readFile(input);
 
         String txt = cipher.encrypt(newinput, Integer.parseInt(key));
 
-        String output = ask("укажите путь для сохранения файла");
+        String output = ask("Укажите путь для сохранения файла: ");
         fileManager.writeFile(txt, output);
 
 
-        System.out.println("Файл успешно зашифрован \u2705");
+        System.out.println("Файл успешно зашифрован \u2705 ");
 
     }
 
     private void decryptFile() throws CipherException {
-        // TODO то же, что в encryptFile, только расшифровка
 
-        String input = ask("исходный файл для расшифровки");
-        String key = ask("ключ");
+        String input = ask("Укажите исходный файл для расшифровки: ");
+        String key = ask("Укажите ключ шифрования \uD83D\uDD11 : ");
 
         if (!validator.isValidKey(Integer.parseInt(key), ALPHABET)){
-            throw new CipherException("неправильный ключ");
+            throw new CipherException("Указан неправильный ключ . \u26A0 ");
         }
 
         if (!validator.isFileExists(input)){
-            throw new CipherException("файл не существует");
+            throw new CipherException("файл не существует \u274C");
         }
 
         String newinput = fileManager.readFile(input);
 
         String txt = cipher.decrypt(newinput, Integer.parseInt(key));
 
-        String output = ask("укажите путь для сохранения файла");
+        String output = ask("укажите путь для сохранения файла: ");
         fileManager.writeFile(txt, output);
 
 
-        System.out.println("Файл успешно расшифрован \u2705");
+        System.out.println("Файл успешно расшифрован \u2705 ");
 
     }
 
     private void bruteForceFile() throws CipherException {
-        // TODO спросить зашифрованный файл и файл для результата,
-        //  подобрать ключ через bruteForce и записать расшифрованный текст
-        System.out.println("Режим пока не реализован");
+        String sayFile = ask("Укажите путь к зашифрованному файлу: ");
+        String sayFinishFile = ask("Укажите путь для сохранения расшифрованного файла: ");
+        String writeTxt = bruteForce.decryptByBruteForce(fileManager.readFile(sayFile), ALPHABET );
+
+        fileManager.writeFile(writeTxt, sayFinishFile);
+        System.out.println("Готово \u2705");
+
+
     }
 
     private String ask(String prompt) {
