@@ -13,11 +13,13 @@ public class Cipher {
     }
 
     public String encrypt(String text, int shift) {
-        // TODO позицию символа ищем быстрее, чем перебором всего массива
         char[] charArray = text.toLowerCase().toCharArray();
         StringBuilder result = new StringBuilder();
-         String st = String.valueOf(alphabet);
-//        HashMap<String, Integer> st = new HashMap<>();
+        HashMap<Character, Integer> st = new HashMap<>();
+        for (int i = 0; i < alphabet.length; i++) {
+            st.put(alphabet[i],i );
+        }
+        
 
         for (char symbol : charArray){
             if (symbol == '\n' || symbol == '\r'){
@@ -25,11 +27,11 @@ public class Cipher {
                 result.append(symbol);
                 continue;
             }
-            int index = st.indexOf(symbol);
-
-            if(index == -1){
+            if (!st.containsKey(symbol)){
                 continue;
             }
+
+            int index = st.get(symbol);
 
             int newindex = (index + shift) % alphabet.length;  //поиск зашифрованного символа по индексу
             char ch = alphabet[newindex]; //получили символ по индексу
