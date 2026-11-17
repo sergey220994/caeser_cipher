@@ -26,7 +26,7 @@ public class FileManager {
     public void writeFile(String content, String filePath) throws CipherException {
         Path path = Path.of(filePath);
 
-        try {
+        try{
             Files.writeString(path, content, StandardOpenOption.CREATE_NEW);
         }
 

@@ -11,7 +11,7 @@ public class BruteForce {
         int bestScore = -1;
         String newText = "";
 
-        for (int i = 1; i <= alphabet.length -1 ; i++) {
+        for (int i = 0; i <= alphabet.length -1 ; i++) {
             String txt = cipher.decrypt(encryptedText, i);
             int score = 0;
             if (txt.contains(" и ")){
@@ -59,6 +59,7 @@ public class BruteForce {
                 bestScore = score;
                 newText = txt;
             }
+
 
         }
         return newText;

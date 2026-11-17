@@ -63,8 +63,18 @@ public class MainApp {
         String input = ask("Укажите исходный файл: ");
         String key = ask("Укажите ключ для шифрования \uD83D\uDD11 : ");
 
-        if (!validator.isValidKey(Integer.parseInt(key), ALPHABET)){
-            throw new CipherException("Указан неправильный ключ \u26A0 ");
+        int newKey ;
+        try {
+             newKey = Integer.parseInt(key);
+        }catch (NumberFormatException e){
+            System.out.println("Указан неверный формат ключа \u26A0");
+            return;
+        }
+
+
+
+        if (!validator.isValidKey(newKey, ALPHABET)){
+            throw new CipherException("Указан неправильный ключ . \u26A0  ");
         }
 
         if (!validator.isFileExists(input)){
@@ -73,7 +83,7 @@ public class MainApp {
 
         String newinput = fileManager.readFile(input);
 
-        String txt = cipher.encrypt(newinput, Integer.parseInt(key));
+        String txt = cipher.encrypt(newinput, newKey);
 
         String output = ask("Укажите путь для сохранения файла: ");
         fileManager.writeFile(txt, output);
@@ -87,9 +97,20 @@ public class MainApp {
 
         String input = ask("Укажите исходный файл для расшифровки: ");
         String key = ask("Укажите ключ шифрования \uD83D\uDD11 : ");
+        int newKey ;
 
-        if (!validator.isValidKey(Integer.parseInt(key), ALPHABET)){
+        try {
+            newKey = Integer.parseInt(key);
+        }
+        catch (NumberFormatException e){
+            System.out.println("Ошибка формата ключа \u26A0 ");
+            return;
+        }
+
+
+        if (!validator.isValidKey(newKey, ALPHABET)){
             throw new CipherException("Указан неправильный ключ . \u26A0 ");
+
         }
 
         if (!validator.isFileExists(input)){
@@ -98,7 +119,7 @@ public class MainApp {
 
         String newinput = fileManager.readFile(input);
 
-        String txt = cipher.decrypt(newinput, Integer.parseInt(key));
+        String txt = cipher.decrypt(newinput, newKey);
 
         String output = ask("укажите путь для сохранения файла: ");
         fileManager.writeFile(txt, output);

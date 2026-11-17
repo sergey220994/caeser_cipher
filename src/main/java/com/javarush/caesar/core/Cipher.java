@@ -20,6 +20,11 @@ public class Cipher {
 //        HashMap<String, Integer> st = new HashMap<>();
 
         for (char symbol : charArray){
+            if (symbol == '\n' || symbol == '\r'){
+
+                result.append(symbol);
+                continue;
+            }
             int index = st.indexOf(symbol);
 
             if(index == -1){
@@ -41,6 +46,12 @@ public class Cipher {
         StringBuilder result = new StringBuilder();
         String st = String.valueOf(alphabet);
         for (char symbol : charArray){
+            if (symbol == '\n' || symbol == '\r'){
+
+                result.append(symbol);
+                continue;
+            }
+
             int index = st.indexOf(symbol);
             if(index == -1)
             {
